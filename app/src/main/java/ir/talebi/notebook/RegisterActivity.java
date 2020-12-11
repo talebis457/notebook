@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -96,6 +97,7 @@ public class RegisterActivity extends AppCompatActivity {
                             Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
                         }).addOnFailureListener(e -> Log.d(TAG, "onFailure: " + e.toString()));
                     } else {
+                        Toast.makeText(this, "ایمیل معتبر و رمز عبور حداقل باید 6 رقم باشد.", Toast.LENGTH_SHORT).show();
                         Log.w(TAG, "createUserWithEmail:failure", task.getException());
                     }
                 });
