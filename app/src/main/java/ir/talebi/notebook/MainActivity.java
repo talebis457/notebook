@@ -75,6 +75,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         adapter = new NoteAdapter(this,user,mAuth,fStore);
         notes = new ArrayList<>();
         noteList.setAdapter(adapter);
+
+        btnAddNote.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this,AddNoteActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override
@@ -99,11 +104,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
+    private int getRandomColor() {
+        List<Integer> colorCode = new ArrayList<>();
+        colorCode.add(R.color.blue);
+        colorCode.add(R.color.yellow);
+        colorCode.add(R.color.skyblue);
+        colorCode.add(R.color.lightPurple);
+        colorCode.add(R.color.lightGreen);
+        colorCode.add(R.color.gray);
+        colorCode.add(R.color.pink);
+        colorCode.add(R.color.red);
+        colorCode.add(R.color.greenlight);
+        colorCode.add(R.color.notgreen);
+
+        Random randomColor = new Random();
+        int number = randomColor.nextInt(colorCode.size());
+        return colorCode.get(number);
+
+    }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         drawerLayout.closeDrawer(Gravity.RIGHT);
         switch(item.getItemId()){
             case R.id.addNote:
+                startActivity(new Intent(this,AddNoteActivity.class));
+                overridePendingTransition(R.anim.slide_up, R.anim.slide_down);
                 break;
 
             case R.id.logout:
