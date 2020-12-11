@@ -41,6 +41,11 @@ public class ShowNoteDetailActivity extends AppCompatActivity {
         content.setBackgroundColor(getResources().getColor(data.getIntExtra("code",0),null));
 
         FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(view -> {
+            Intent i = new Intent(view.getContext(),EditeNoteActivity.class);
+            i.putExtra("note",note);
+            startActivity(i);
+        });
     }
 
     @Override
