@@ -39,6 +39,9 @@
         <activity
             android:name=".AddNoteActivity"
             android:screenOrientation="portrait" />
+
+        <activity android:name=".ShowNoteDetailActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

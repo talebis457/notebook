@@ -80,6 +80,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(MainActivity.this,AddNoteActivity.class);
             startActivity(intent);
         });
+
+        adapter.setSetOnClickNoteListIte((view, note) -> {
+            Intent i = new Intent(view.getContext(), ShowNoteDetailActivity.class);
+            i.putExtra("note",note);
+            i.putExtra("code",getRandomColor());
+            startActivity(i);
+        });
     }
 
     @Override
